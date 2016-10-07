@@ -1,11 +1,14 @@
 package com.android.lukekim.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.android.lukekim.jokeviewer.ViewerActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -31,6 +34,23 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        Button button = (Button)root.findViewById(R.id.jokeButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new JokeTask(new JokeTask.Listener() {
+
+                    @Override
+                    public void onJokeLoaded(String joke) {
+                        Intent intent = new Intent(getContext(), ViewerActivity.class);
+                        intent.putExtra(ViewerActivity.PARAM_JOKE, joke);
+                        startActivity(intent);
+                    }
+                }).execute();
+            }
+        });
         return root;
     }
 }
