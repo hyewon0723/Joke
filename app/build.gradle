@@ -31,13 +31,16 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(path: ':jokeviewer')
+
     // Added for AdMob
+    compile project(path: ':backend', configuration: 'android-endpoints')
+    compile project(path: ':jokeviewer')
+    compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.google.android.gms:play-services-ads:9.6.1'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.android.support:support-v4:24.2.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:24.2.1'
-    compile project(path: ':backend', configuration: 'android-endpoints')
 }
