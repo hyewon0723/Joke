@@ -18,9 +18,7 @@ public class MainActivityFragmentWithAd extends MainActivityFragment {
                              Bundle savedInstanceState) {
         View root = super.onCreateView(inflater, container, savedInstanceState);
         AdView mAdView = (AdView)root.findViewById(R.id.ad_view);
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mAdView.loadAd(adRequest);
         return root;
     }

@@ -25,19 +25,19 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
 
-        Button button = (Button)root.findViewById(R.id.jokeButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button jokeButton = (Button)root.findViewById(R.id.jokeButton);
+        jokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 new JokeTask(new JokeTask.Listener() {
-
                     @Override
                     public void onJokeLoaded(String joke) {
                         Intent intent = new Intent(getContext(), ViewerActivity.class);
                         intent.putExtra(ViewerActivity.PARAM_JOKE, joke);
                         startActivity(intent);
                     }
+
                 }).execute();
             }
         });
